@@ -1,0 +1,67 @@
+.topBar {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  z-index: 5;
+
+  .left {
+    width: 20%;
+
+    img {
+      height: 30px;
+
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .center {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  // Estilos para tablets (por ejemplo, pantallas con un ancho máximo de 768px)
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    .left,
+    .right {
+      width: 25%;
+    }
+
+    .center {
+      width: 50%;
+    }
+  }
+
+  // Estilos para móviles (por ejemplo, pantallas con un ancho máximo de 480px)
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+
+    .left,
+    .right {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .center {
+      width: 100%;
+    }
+  }
+}

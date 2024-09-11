@@ -1,0 +1,90 @@
+@import "~/src/scss/index.scss";
+
+.container {
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    // Tablet
+    flex-direction: column;
+  }
+
+  @media (max-width: 480px) {
+    // Móvil
+    height: auto;
+  }
+}
+
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+
+  > a {
+    > img {
+      height: 30px;
+
+      @media (max-width: 480px) {
+        // Móvil
+        height: 24px;
+      }
+    }
+
+    > i {
+      font-size: 26px;
+      color: $danger;
+      margin: 0;
+
+      @media (max-width: 480px) {
+        // Móvil
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.blockLeft {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    // Tablet
+    width: 100%;
+    height: 50%;
+  }
+
+  @media (max-width: 480px) {
+    // Móvil
+    height: auto;
+    margin-top: 30vh;
+  }
+}
+
+.blockRight {
+  background-image: url("/images/sign.jpeg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 50%;
+
+  @media (max-width: 768px) {
+    // Tablet
+    width: 100%;
+    height: 50%;
+  }
+
+  @media (max-width: 480px) {
+    // Móvil
+    // height: 200px;
+    display: none;
+  }
+}
