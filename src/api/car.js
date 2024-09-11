@@ -60,14 +60,14 @@ export class Car {
     }
   }
 
-  async searchGames(text, page) {
+  async searchCars(text, page) {
     try {
       const filters = `filters[title][$contains]=${text}`;
-      const pagination = `pagination[page]=${page}&pagination[pageSize]=30`;
+      const pagination = `pagination[page]=${page}&pagination[pageSize]=9`;
       const populate = "populate=*";
       const urlParams = `${filters}&${pagination}&${populate}`;
 
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`;
+      const url = `${ENV.SERVER_API_URL}/${ENV.ENDPOINTS.CAR}?${urlParams}`;
 
       const response = await fetch(url);
       const result = await response.json();

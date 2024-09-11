@@ -13,7 +13,7 @@ const brandCtrl = new Brand();
 export function Menu(props) {
   const { isOpenSearch } = props;
   const [brands, setBrands] = useState(null);
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch, setShowSearch] = useState(isOpenSearch);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
 
@@ -29,6 +29,15 @@ export function Menu(props) {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    setSearchText(router.query.s || "");
+  }, []);
+
+  const onSearch = (text) => {
+    setSearchText(text);
+    router.replace(`/search?s=${text}`);
+  };
 
   return (
     <div className={styles.platforms}>
@@ -51,12 +60,12 @@ export function Menu(props) {
         })}
       >
         <Input
-          id="search-games"
+          id="search-cars"
           placeholder="Buscador"
           className={styles.input}
           focus={true}
-          //   value={searchText}
-          //   onChange={(_, data) => onSearch(data.value)}
+          value={searchText}
+          onChange={(_, data) => onSearch(data.value)}
         />
         <Icon
           name="close"

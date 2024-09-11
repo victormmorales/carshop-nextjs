@@ -1,19 +1,25 @@
+import { useEffect } from "react";
 import { Container } from "semantic-ui-react";
 import { size } from "lodash";
 import { BasicLayout } from "@/layouts";
-import { GridCars, Separator, NoResult, Pagination } from "@/components/Shared";
+import { GridCars, NoResult, Pagination, Separator } from "@/components/Shared";
 
-export default function BrandPage(props) {
-  const { cars, brand, pagination } = props;
-  const hasProducts = size(cars) > 0;
+export default function SearchPage(props) {
+  const { cars, pagination, searchText } = props;
+  const hasResult = size(cars) > 0;
+
+  useEffect(() => {
+    document.getElementById("search-cars").focus();
+  }, []);
 
   return (
     <>
-      <BasicLayout relative>
+      <BasicLayout relative isOpenSearch>
         <Container>
           <Separator height={50} />
-          <h2>{brand.attributes.title}</h2>
-          {hasProducts ? (
+          <h2>Buscando... {searchText}</h2>
+          <Separator height={50} />
+          {hasResult ? (
             <>
               <GridCars cars={cars} />
               <Separator height={30} />
@@ -26,14 +32,11 @@ export default function BrandPage(props) {
             </>
           ) : (
             <>
-              <Separator height={50} />
-              <NoResult
-                text={`La marca ${brand.attributes.title} aun no tiene coches 🚘`}
-              />
+              <Separator height={100} />
+              <NoResult text="No se han encontrado resultados 🚘" />
               <Separator height={250} />
             </>
           )}
-          <Separator height={100} />
         </Container>
       </BasicLayout>
     </>
